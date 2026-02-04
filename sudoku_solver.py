@@ -147,21 +147,19 @@ class SudokuSolver:
 if __name__ == "__main__":
     # Load one puzzle
     puzzles, solutions = load_puzzles('data/sudoku.csv', num_puzzles=1)
+    board = string_to_board(puzzles[0])
     
-    print("Testing all three heuristics on the same puzzle:\n")
-    print("="*60)
+    print("Original puzzle:")
+    print_board(board)
+    print()
     
-    for heuristic in ['sequential', 'random', 'mrv']:
-        board = string_to_board(puzzles[0])  # Reset board each time
-        
-        solver = SudokuSolver(heuristic=heuristic)
-        start = time.time()
-        solved = solver.solve(board)
-        elapsed = time.time() - start
-        
-        print(f"\n{heuristic.upper()} Heuristic:")
-        print(f"  Time: {elapsed:.6f}s")
-        print(f"  Backtracks: {solver.backtracks}")
-        print(f"  Solved: {solved}")
+    # Test sequential heuristic
+    solver = SudokuSolver(heuristic='sequential')
+    start = time.time()
+    solved = solver.solve(board)
+    elapsed = time.time() - start
     
-    print("\n" + "="*60)
+    print("Solved puzzle:")
+    print_board(board)
+    print(f"\nTime: {elapsed:.4f}s")
+    print(f"Backtracks: {solver.backtracks}")
