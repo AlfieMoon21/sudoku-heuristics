@@ -1,0 +1,228 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{url}
+
+\begin{document}
+
+\title{Comparative Analysis of Variable Ordering Heuristics in Backtracking-Based Sudoku Solving}
+
+\author{\IEEEauthorblockN{Your Name}
+\IEEEauthorblockA{\textit{School of Computing} \\
+\textit{Falmouth University}\\
+Cornwall, United Kingdom \\
+your.email@falmouth.ac.uk}
+}
+
+\maketitle
+
+\begin{abstract}
+This paper presents a comparative evaluation of three variable ordering heuristics for solving Sudoku puzzles using a backtracking algorithm. We compare sequential cell selection, random cell selection, and the Minimum Remaining Values (MRV) heuristic across 50 standard 9×9 Sudoku puzzles. Results demonstrate that MRV achieves zero backtracks on all test puzzles, while sequential selection averages 90.64 backtracks and random selection averages 34,014.77 backtracks. Despite MRV's higher per-iteration computational cost, it demonstrates superior overall efficiency through dramatic reduction in search space exploration. These findings confirm the importance of intelligent variable ordering in constraint satisfaction problems.
+\end{abstract}
+
+\begin{IEEEkeywords}
+constraint satisfaction, backtracking, heuristics, Sudoku, variable ordering, MRV
+\end{IEEEkeywords}
+
+\section{Introduction}
+Constraint Satisfaction Problems (CSPs) form a fundamental class of artificial intelligence problems with applications spanning scheduling, resource allocation, and puzzle solving. The performance of CSP solvers depends critically on search strategies, particularly the order in which variables are assigned values. This paper investigates how variable ordering heuristics affect backtracking algorithm performance in the context of Sudoku puzzle solving.
+
+Sudoku serves as an ideal benchmark for CSP research due to its well-defined constraints, finite solution space, and scalability. While a 9×9 Sudoku grid has approximately $6.67 \times 10^{21}$ possible configurations, intelligent search strategies can solve puzzles in milliseconds.
+
+This work compares three variable ordering approaches: sequential (baseline), random (control), and Minimum Remaining Values (MRV). We measure backtracking frequency and execution time across 50 puzzles to quantify the impact of heuristic choice on solver efficiency.
+
+The remainder of this paper is organized as follows: Section II reviews related work on CSPs and Sudoku solving; Section III describes our methodology; Section IV presents results; Section V discusses findings; and Section VI concludes with implications and future work.
+
+\section{Background and Related Work}
+
+\subsection{Constraint Satisfaction Problems}
+
+A CSP consists of three components: a set of variables $V = \{V_1, V_2, \ldots, V_n\}$, domains $D = \{D_1, D_2, \ldots, D_n\}$ specifying possible values for each variable, and constraints $C$ that restrict valid value combinations \cite{russell_norvig}. Finding a solution requires assigning values to all variables such that all constraints are satisfied.
+
+CSP solving is NP-complete in general \cite{yato2003}, making algorithm efficiency crucial. Backtracking search with constraint propagation remains the standard approach for exact solutions.
+
+\subsection{Sudoku as a CSP}
+
+Sudoku can be formalized as a CSP with 81 variables (cells), each with domain $\{1, 2, \ldots, 9\}$, and 27 all-different constraints (9 rows, 9 columns, 9 boxes) \cite{simonis2005}. The problem is to assign values satisfying all constraints.
+
+While general $n \times n$ Sudoku is NP-complete \cite{yato2003}, standard 9×9 puzzles have finite complexity and can be solved efficiently with appropriate algorithms.
+
+\subsection{Backtracking Search}
+
+Backtracking systematically explores the search space by recursively assigning values and undoing assignments when constraints are violated \cite{russell_norvig}. The algorithm's efficiency depends on minimizing failed branches through intelligent variable and value ordering.
+
+\subsection{Variable Ordering Heuristics}
+
+The Minimum Remaining Values (MRV) heuristic, also called the "most constrained variable" or "fail-first" heuristic, selects the variable with the fewest legal values remaining \cite{norvig2006}. By choosing highly constrained variables first, MRV detects failures early and prunes the search tree aggressively.
+
+Norvig demonstrated MRV's effectiveness in Sudoku solving, integrating it with constraint propagation \cite{norvig2006}. Schermerhorn showed MRV reduced node expansions from 133,797 to 93,094 on size-four Sudoku variants \cite{schermerhorn2009}.
+
+Recent work by Schottlender \cite{schottlender2014} examined value ordering (the sequence in which values are tried for a given cell), finding that randomized value selection outperformed sequential ordering. Our work complements this by examining variable ordering (which cell to fill next) rather than value ordering.
+
+\section{Methodology}
+
+\subsection{Implementation}
+
+A backtracking solver was implemented in Python 3.14 following standard recursive approaches \cite{russell_norvig}. The core algorithm:
+
+\begin{algorithmic}
+\STATE Find next empty cell using heuristic
+\IF{no empty cells}
+    \RETURN solution found
+\ENDIF
+\FOR{each value 1 to 9}
+    \IF{value is valid}
+        \STATE Assign value
+        \IF{recursive solve succeeds}
+            \RETURN success
+        \ENDIF
+        \STATE Remove value (backtrack)
+        \STATE Increment backtrack counter
+    \ENDIF
+\ENDFOR
+\RETURN failure
+\end{algorithmic}
+
+Cell validity checking ensures no duplicate values in the cell's row, column, or 3×3 box.
+
+\subsection{Variable Ordering Heuristics}
+
+Three heuristics determine the next empty cell:
+
+\textbf{Sequential:} Cells are selected in row-major order. This baseline approach requires no computation but provides no intelligent ordering.
+
+\textbf{Random:} A cell is selected uniformly at random from all empty cells. This control condition tests whether any ordering outperforms chance.
+
+\textbf{MRV:} For each empty cell, count valid remaining values. Select the cell with minimum count. Ties are broken arbitrarily. This implements the fail-fast principle: constrained cells are more likely to cause failures, so testing them early prunes the search space.
+
+\subsection{Experimental Design}
+
+\textbf{Dataset:} 50 Sudoku puzzles were obtained from the Kaggle Sudoku dataset \cite{kaggle_sudoku}. Puzzles are represented as 81-character strings with '0' for empty cells.
+
+\textbf{Procedure:} Each puzzle was solved once with each heuristic. The board state was reset between runs to ensure identical starting conditions. For each run, we measured:
+\begin{itemize}
+    \item Execution time (seconds)
+    \item Number of backtracks
+    \item Solution correctness (verified against provided solutions)
+\end{itemize}
+
+\textbf{Platform:} Experiments ran on Arch Linux with Python 3.14, pandas 2.0, and numpy 1.24. Code is available at \url{https://github.com/AlfieMoon21/sudoku-heuristics}.
+
+\section{Results}
+
+Table \ref{tab:summary} presents performance statistics. Figure \ref{fig:backtracks} shows average backtracks per heuristic.
+
+\begin{table}[htbp]
+\caption{Performance Summary Statistics (n=50)}
+\begin{center}
+\begin{tabular}{|l|r|r|r|}
+\hline
+\textbf{Heuristic} & \textbf{Mean BT} & \textbf{Mean Time (s)} & \textbf{Max BT} \\
+\hline
+Sequential & 90.64 & 0.000390 & 640 \\
+Random & 34,014.77 & 0.183221 & 582,024 \\
+MRV & 0.00 & 0.003860 & 0 \\
+\hline
+\end{tabular}
+\label{tab:summary}
+\end{center}
+\end{table}
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=\columnwidth]{fig1_backtracks_comparison.png}}
+\caption{Average backtracks per heuristic}
+\label{fig:backtracks}
+\end{figure}
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=\columnwidth]{fig2_time_comparison.png}}
+\caption{Average solving time per heuristic}
+\label{fig:time}
+\end{figure}
+
+MRV achieved zero backtracks on all 50 puzzles, indicating perfect variable selection. Every cell chosen had a unique valid value or the solver never explored incorrect paths.
+
+Sequential selection averaged 90.64 backtracks with high variance (σ=98.25, range 1-640), suggesting performance depends heavily on puzzle structure.
+
+Random selection performed worst, averaging 34,014.77 backtracks (σ=70,547.83) with maximum 582,024. The 375-fold increase over sequential confirms that variable ordering dramatically impacts efficiency.
+
+Despite solving puzzles without backtracking, MRV's mean execution time (0.00386s) was 9.9× slower than sequential (0.00039s). This reflects MRV's per-iteration overhead of computing remaining values for all empty cells.
+
+However, random selection's 0.183s average time demonstrates that backtracking cost dominates for inefficient heuristics. MRV's computational overhead is negligible compared to exploring unnecessary search branches.
+
+\section{Discussion}
+
+\subsection{Why MRV Achieves Zero Backtracks}
+
+MRV's perfect performance stems from the fail-fast principle. By always selecting the most constrained cell, MRV either:
+\begin{enumerate}
+    \item Finds a cell with one valid value (forced move)
+    \item Identifies an unsolvable state immediately
+\end{enumerate}
+
+For valid Sudoku puzzles, constraint propagation through MRV ordering creates a sequence of forced moves, eliminating the need for speculative assignments.
+
+\subsection{Computational Trade-offs}
+
+MRV incurs $O(n \cdot k)$ overhead per cell selection, where $n$ is empty cells and $k$ is domain size (9). For a 9×9 Sudoku, this adds approximately 81 constraint checks per iteration.
+
+Sequential ordering has $O(1)$ cell selection but explores exponentially more search branches. Our results show MRV's linear overhead is vastly preferable to exponential search.
+
+This aligns with Schottlender's findings on value ordering \cite{schottlender2014}: intelligent heuristics reduce search despite computational cost.
+
+\subsection{Implications for CSP Solving}
+
+These results generalize beyond Sudoku. Variable ordering is crucial for CSP solver performance. The 375× difference between random and sequential, and sequential vs MRV's elimination of backtracking, demonstrates that heuristic choice is not a minor optimization but a fundamental algorithmic decision.
+
+\subsection{Limitations}
+
+Our study focuses on standard 9×9 Sudoku. Results may differ for larger grids or problems with different constraint structures. Additionally, we examined only three heuristics; hybrid approaches combining MRV with degree heuristics or other tie-breaking strategies merit investigation.
+
+\section{Conclusion}
+
+This paper demonstrates that variable ordering heuristics profoundly impact backtracking algorithm performance. MRV eliminates backtracking entirely for standard Sudoku puzzles, while random selection increases backtracks 375-fold compared to sequential ordering.
+
+Despite MRV's 9.9× computational overhead per iteration, it solves puzzles 47× faster than random selection by avoiding unnecessary search. This confirms that intelligent variable ordering is essential for efficient CSP solving.
+
+\subsection{Legal, Ethical, and Sustainability Considerations}
+
+Sudoku solvers have minimal direct societal impact, but CSP algorithms underpin critical applications including scheduling, resource allocation, and constraint-based configuration. Efficient algorithms reduce computational resource consumption, supporting sustainability goals.
+
+Ethically, algorithm transparency matters: users should understand whether automated scheduling systems use optimal or heuristic approaches. Professionally, implementing CSP solvers requires understanding algorithmic trade-offs to select appropriate techniques for problem scale.
+
+\subsection{Future Work}
+
+Future research directions include:
+\begin{itemize}
+    \item Testing on larger Sudoku variants and other CSP domains
+    \item Investigating hybrid heuristics (MRV with degree heuristic tie-breaking)
+    \item Combining intelligent variable and value ordering
+    \item Analyzing puzzle features that predict heuristic performance
+\end{itemize}
+
+CSP solvers incorporating MRV-style heuristics could improve efficiency in scheduling systems, configuration tools, and other constraint-based applications, reducing computational costs while maintaining solution quality.
+
+\begin{thebibliography}{00}
+\bibitem{russell_norvig} S. Russell and P. Norvig, \textit{Artificial Intelligence: A Modern Approach}, 4th ed. Pearson, 2020.
+
+\bibitem{yato2003} T. Yato and T. Seta, ``Complexity and completeness of finding another solution and its application to puzzles,'' \textit{IEICE Trans. Fundamentals}, vol. E86-A, no. 5, pp. 1052--1060, 2003.
+
+\bibitem{simonis2005} H. Simonis, ``Sudoku as a constraint problem,'' in \textit{CP Workshop on Modeling and Reformulating Constraint Satisfaction Problems}, vol. 12, pp. 13--27, 2005.
+
+\bibitem{norvig2006} P. Norvig, ``Solving every Sudoku puzzle,'' 2006. [Online]. Available: \url{https://norvig.com/sudoku.html}
+
+\bibitem{schermerhorn2009} M. Schermerhorn, ``A Sudoku solver,'' CSC 242: Artificial Intelligence, University of Rochester, 2009.
+
+\bibitem{schottlender2014} M. Schottlender, ``The effect of guess choices on the efficiency of a backtracking algorithm in a Sudoku solver,'' in \textit{Proc. IEEE Conf.}, pp. 1--6, 2014.
+
+\bibitem{kaggle_sudoku} B. Park, ``Sudoku dataset,'' Kaggle, 2017. [Online]. Available: \url{https://www.kaggle.com/datasets/bryanpark/sudoku}
+
+\end{thebibliography}
+
+\end{document}
