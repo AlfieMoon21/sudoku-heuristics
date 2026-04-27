@@ -13,11 +13,11 @@
 
 \title{Comparative Analysis of Variable Ordering Heuristics in Backtracking-Based Sudoku Solving}
 
-\author{\IEEEauthorblockN{Your Name}
+\author{\IEEEauthorblockN{Alfie Jenkins}
 \IEEEauthorblockA{\textit{School of Computing} \\
 \textit{Falmouth University}\\
 Cornwall, United Kingdom \\
-your.email@falmouth.ac.uk}
+aj313798@falmouth.ac.uk}
 }
 
 \maketitle
@@ -35,7 +35,7 @@ Constraint Satisfaction Problems (CSPs) form a fundamental class of artificial i
 
 Sudoku serves as an ideal benchmark for CSP research due to its well-defined constraints, finite solution space, and scalability. While a 9×9 Sudoku grid has approximately $6.67 \times 10^{21}$ possible configurations, intelligent search strategies can solve puzzles in milliseconds.
 
-This work compares three variable ordering approaches: sequential (baseline), random (control), and Minimum Remaining Values (MRV). We measure backtracking frequency and execution time across 50 puzzles to quantify the impact of heuristic choice on solver efficiency.
+This work compares three variable ordering approaches: sequential (baseline), random (control), and Minimum Remaining Values (MRV). We measure backtracking frequency and execution time across 50 puzzles to quantify the impact of heuristic choice on solver efficiency. Understanding heuristic efficiency extends beyond puzzles: CSP techniques underpin real-world scheduling, logistics, and resource allocation systems where solver performance affects operational cost, fairness, and energy consumption.
 
 The remainder of this paper is organized as follows: Section II reviews related work on CSPs and Sudoku solving; Section III describes our methodology; Section IV presents results; Section V discusses findings; and Section VI concludes with implications and future work.
 
@@ -103,7 +103,7 @@ Three heuristics determine the next empty cell:
 
 \subsection{Experimental Design}
 
-\textbf{Dataset:} 50 Sudoku puzzles were obtained from the Kaggle Sudoku dataset \cite{kaggle_sudoku}. Puzzles are represented as 81-character strings with '0' for empty cells.
+\textbf{Dataset:} The first 50 puzzles from the Kaggle Sudoku dataset \cite{kaggle_sudoku} were used. Puzzles are represented as 81-character strings with '0' for empty cells. The dataset is released under a CC0 public domain licence, permitting unrestricted academic use; no personally identifiable data is present.
 
 \textbf{Procedure:} Each puzzle was solved once with each heuristic. The board state was reset between runs to ensure identical starting conditions. For each run, we measured:
 \begin{itemize}
@@ -135,13 +135,13 @@ MRV & 0.00 & 0.003860 & 0 \\
 \end{table}
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[width=\columnwidth]{fig1_backtracks_comparison.png}}
+\centerline{\includegraphics[width=\columnwidth]{../../results/fig1_backtracks_comparison.png}}
 \caption{Average backtracks per heuristic}
 \label{fig:backtracks}
 \end{figure}
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[width=\columnwidth]{fig2_time_comparison.png}}
+\centerline{\includegraphics[width=\columnwidth]{../../results/fig2_time_comparison.png}}
 \caption{Average solving time per heuristic}
 \label{fig:time}
 \end{figure}
@@ -190,11 +190,17 @@ This paper demonstrates that variable ordering heuristics profoundly impact back
 
 Despite MRV's 9.9× computational overhead per iteration, it solves puzzles 47× faster than random selection by avoiding unnecessary search. This confirms that intelligent variable ordering is essential for efficient CSP solving.
 
-\subsection{Legal, Ethical, and Sustainability Considerations}
+\subsection{Legal, Social, Ethical, Professional, and Sustainability Considerations}
 
-Sudoku solvers have minimal direct societal impact, but CSP algorithms underpin critical applications including scheduling, resource allocation, and constraint-based configuration. Efficient algorithms reduce computational resource consumption, supporting sustainability goals.
+\textbf{Legal.} CSP solvers deployed in safety-critical domains — air traffic scheduling, medical resource allocation, or financial constraint systems — may be subject to regulatory requirements on algorithmic transparency and auditability. Selecting an inefficient heuristic that causes solver timeouts in such a system could constitute professional negligence. Developers have a duty to document algorithm choices and their known limitations.
 
-Ethically, algorithm transparency matters: users should understand whether automated scheduling systems use optimal or heuristic approaches. Professionally, implementing CSP solvers requires understanding algorithmic trade-offs to select appropriate techniques for problem scale.
+\textbf{Social.} Heuristic CSP solvers are used in workforce scheduling, exam timetabling, and logistics. A suboptimal variable ordering (analogous to our sequential or random heuristics) may produce solutions that are technically valid but unfair in practice — for example, consistently assigning unsociable hours to particular workers. The 375-fold performance gap between random and sequential ordering observed here illustrates how algorithm choice has real distributional consequences when applied at scale.
+
+\textbf{Ethical.} Algorithm transparency is an ethical obligation. Users of automated scheduling or configuration systems should be informed whether the system is guaranteed to find an optimal solution or is applying a heuristic that may not. Presenting a heuristic result as optimal without disclosure is misleading. This is particularly relevant as MRV, while highly effective on standard Sudoku, may not achieve zero backtracks on harder or larger CSP instances.
+
+\textbf{Professional.} Professional engineers selecting CSP solvers must weigh the trade-offs demonstrated in this work. Sequential selection is simple to implement and audit, while MRV requires more careful implementation and testing. Choosing the wrong heuristic for a production system — particularly one where solver performance degrades under load — is a foreseeable professional risk. The ACM Code of Ethics \cite{acm2018} requires practitioners to act competently and to understand the limitations of the techniques they deploy.
+
+\textbf{Sustainability.} Computational efficiency has direct energy implications. The random heuristic's 0.183s average solve time is 470 times slower than sequential and 47 times slower than MRV. At scale — thousands of solver invocations per day in a scheduling system — this difference translates to significant unnecessary energy consumption. Choosing efficient heuristics such as MRV is a concrete sustainability decision, reducing the carbon footprint of constraint-based software.
 
 \subsection{Future Work}
 
@@ -222,6 +228,8 @@ CSP solvers incorporating MRV-style heuristics could improve efficiency in sched
 \bibitem{schottlender2014} M. Schottlender, ``The effect of guess choices on the efficiency of a backtracking algorithm in a Sudoku solver,'' in \textit{Proc. IEEE Conf.}, pp. 1--6, 2014.
 
 \bibitem{kaggle_sudoku} B. Park, ``Sudoku dataset,'' Kaggle, 2017. [Online]. Available: \url{https://www.kaggle.com/datasets/bryanpark/sudoku}
+
+\bibitem{acm2018} ACM, ``ACM Code of Ethics and Professional Conduct,'' 2018. [Online]. Available: \url{https://www.acm.org/code-of-ethics}
 
 \end{thebibliography}
 
