@@ -19,6 +19,7 @@ def load_puzzles(filename, num_puzzles=100):
 
 def string_to_board(s):
     """Convert 81-char string to 9x9 grid"""
+    s = str(s).zfill(81)
     board = []
     for i in range(9):
         row = [int(s[i*9 + j]) for j in range(9)]
