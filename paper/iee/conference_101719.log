@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.24.0 (TeX Live 2026/Arch Linux)  (format=lualatex 2026.3.25)  6 MAY 2026 14:23
+This is LuaHBTeX, Version 1.24.0 (TeX Live 2026/Arch Linux)  (format=lualatex 2026.3.25)  6 MAY 2026 14:29
  restricted system commands enabled.
  file:line:error style messages enabled.
 **/home/moon/Uni/sudoku-heuristics/paper/iee/conference_101719
@@ -350,29 +350,41 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 24.
+(Font)              using `TU/ptm/bx/n' instead on input line 23.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 25.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 24.
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 24.
  (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 28.
+(Font)              using `TU/ptm/bx/n' instead on input line 27.
 
 
 LaTeX Font Warning: Font shape `TU/ptm/m/sc' undefined
-(Font)              using `TU/ptm/m/n' instead on input line 32.
+(Font)              using `TU/ptm/m/n' instead on input line 31.
 
 [1
 Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 80.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 81.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 81.
+
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
 (Font)              using `TU/ptm/bx/n' instead on input line 81.
@@ -387,10 +399,6 @@ LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 82.
-
-
-LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
 (Font)              using `TU/ptm/bx/n' instead on input line 83.
 
 
@@ -399,23 +407,19 @@ LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 84.
+(Font)              using `TU/ptm/bx/n' instead on input line 85.
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 84.
+(Font)              using `TU/ptm/bx/n' instead on input line 85.
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 86.
+(Font)              using `TU/ptm/bx/n' instead on input line 85.
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 86.
-
-
-LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 86.
+(Font)              using `TU/ptm/bx/n' instead on input line 87.
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
@@ -427,105 +431,101 @@ LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 90.
+(Font)              using `TU/ptm/bx/n' instead on input line 98.
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 99.
+(Font)              using `TU/ptm/bx/n' instead on input line 100.
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 101.
+(Font)              using `TU/ptm/bx/n' instead on input line 102.
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 103.
+(Font)              using `TU/ptm/bx/n' instead on input line 106.
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 107.
+(Font)              using `TU/ptm/bx/n' instead on input line 108.
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 109.
+(Font)              using `TU/ptm/bx/n' instead on input line 115.
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 116.
+(Font)              using `TU/ptm/bx/n' instead on input line 127.
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 128.
+(Font)              using `TU/ptm/bx/n' instead on input line 127.
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 128.
+(Font)              using `TU/ptm/bx/n' instead on input line 127.
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 128.
+(Font)              using `TU/ptm/bx/n' instead on input line 127.
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 128.
+(Font)              using `TU/ptm/bx/n' instead on input line 127.
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 128.
+(Font)              using `TU/ptm/bx/n' instead on input line 143.
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 144.
+(Font)              using `TU/ptm/bx/n' instead on input line 143.
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 144.
-
-
-LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 144.
+(Font)              using `TU/ptm/bx/n' instead on input line 143.
 
 <../../results/fig1_backtracks_comparison.png, id=17, 433.62pt x 289.08pt>
 File: ../../results/fig1_backtracks_comparison.png Graphic file (type png)
 <use ../../results/fig1_backtracks_comparison.png>
-Package luatex.def Info: ../../results/fig1_backtracks_comparison.png  used on input line 156.
+Package luatex.def Info: ../../results/fig1_backtracks_comparison.png  used on input line 155.
 (luatex.def)             Requested size: 252.0pt x 168.00174pt.
 <../../results/fig2_time_comparison.png, id=18, 433.62pt x 289.08pt>
 File: ../../results/fig2_time_comparison.png Graphic file (type png)
 <use ../../results/fig2_time_comparison.png>
-Package luatex.def Info: ../../results/fig2_time_comparison.png  used on input line 162.
+Package luatex.def Info: ../../results/fig2_time_comparison.png  used on input line 161.
 (luatex.def)             Requested size: 252.0pt x 168.00174pt.
 [2<../../results/fig1_backtracks_comparison.png>]
 <../../results/fig3_distributions.png, id=30, 722.7pt x 289.08pt>
 File: ../../results/fig3_distributions.png Graphic file (type png)
 <use ../../results/fig3_distributions.png>
-Package luatex.def Info: ../../results/fig3_distributions.png  used on input line 182.
+Package luatex.def Info: ../../results/fig3_distributions.png  used on input line 181.
 (luatex.def)             Requested size: 252.0pt x 100.80016pt.
 <../../results/fig6_difficulty_correlation.png, id=31, 433.62pt x 289.08pt>
 File: ../../results/fig6_difficulty_correlation.png Graphic file (type png)
 <use ../../results/fig6_difficulty_correlation.png>
-Package luatex.def Info: ../../results/fig6_difficulty_correlation.png  used on input line 192.
+Package luatex.def Info: ../../results/fig6_difficulty_correlation.png  used on input line 191.
 (luatex.def)             Requested size: 252.0pt x 168.00174pt.
  [3<../../results/fig2_time_comparison.png><../../results/fig3_distributions.png><../../results/fig6_difficulty_correlation.png>]
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 229.
+(Font)              using `TU/ptm/bx/n' instead on input line 228.
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 231.
+(Font)              using `TU/ptm/bx/n' instead on input line 230.
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 233.
+(Font)              using `TU/ptm/bx/n' instead on input line 232.
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 235.
+(Font)              using `TU/ptm/bx/n' instead on input line 234.
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 237.
+(Font)              using `TU/ptm/bx/n' instead on input line 236.
 
 
 ** Conference Paper **
@@ -551,15 +551,15 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Here is how much of LuaTeX's memory you used:
  4144 strings out of 476076
- 156263,460012 words of node,token memory allocated
+ 156265,460012 words of node,token memory allocated
  498 words of node memory still in use:
    6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 7 attribute, 54 glue_spec, 7 attribute_list, 1 write nodes
-   avail lists: 2:793,3:283,4:50,5:730,6:71,7:15168,8:48,9:566,10:18,11:1185
+   avail lists: 2:789,3:293,4:50,5:735,6:75,7:15400,8:48,9:566,10:18,11:1209
  26549 multiletter control sequences out of 65536+600000
  60 fonts using 4152223 bytes
  57i,10n,62p,1008b,327s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.otf></usr/share/texmf-dist/fonts/opentype/public/lm/lmroman9-regular.otf></usr/share/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf></usr/share/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texmf-dist/fonts/opentype/public/lm/lmroman17-regular.otf></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on conference_101719.pdf (4 pages, 289346 bytes).
+Output written on conference_101719.pdf (4 pages, 289433 bytes).
 
 PDF statistics: 112 PDF objects out of 1000 (max. 8388607)
  69 compressed objects within 1 object stream
